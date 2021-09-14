@@ -1,0 +1,51 @@
+{
+  "name": "typescript-node-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc -p ."
+  },
+  "author": "Abraham Udele",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/faker": "^5.5.8",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/supertest": "^2.0.11",
+    "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "crypto-random-string": "^4.0.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "jest": "^27.2.0",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^7.4.0",
+    "mongoose": "^6.0.5",
+    "nodemailer": "^6.6.3",
+    "nodemailer-mailgun-transport": "^2.1.3",
+    "path": "^0.12.7",
+    "supertest": "^6.1.6"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cookie-session": "^2.0.43",
+    "@types/csurf": "^1.11.2",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.9.1",
+    "@types/nodemailer": "^6.4.4",
+    "@types/nodemailer-mailgun-transport": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
