@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 secrets.json
+/dist
 
 # testing
 /coverage
