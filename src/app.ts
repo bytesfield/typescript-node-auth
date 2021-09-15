@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieSession from "cookie-session";
 import config from "../src/config";
 import csurf from "csurf";
+import routes from "./routes";
 
 
 const app = express();
@@ -35,5 +36,7 @@ if (config.app.env == "production") {
         next();
     });
 }
+
+app.use(routes);
 
 export default app;

@@ -2,9 +2,9 @@ import { User } from "../../../database/users/users.model";
 import { IUserDocument } from "../../../database/users/users.types";
 import { Code } from "../../../database/codes/codes.model";
 import { ICodeDocument } from "../../../database/codes/codes.types";
-import config from "../../../config/index";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import nodemailer from "../../../utils/modules/nodemailer";
 
 
 const createUser = async (payload: object): Promise<IUserDocument> => {
@@ -21,6 +21,7 @@ const createCode = async (payload: object): Promise<ICodeDocument> => {
 
     return newCode;
 }
+
 const getUserByEmail = async (email: string): Promise<IUserDocument | null> => {
 
     const user = await User.findOne({ email: email });
@@ -28,7 +29,7 @@ const getUserByEmail = async (email: string): Promise<IUserDocument | null> => {
     return user;
 }
 
-const getUserById = async (id: number): Promise<IUserDocument | null> => {
+const getUserById = async (id: any): Promise<IUserDocument | null> => {
 
     const user = await User.findById(id);
 
@@ -55,9 +56,8 @@ const validPassword = async (password: string, inPassword: string): Promise<bool
     return isValidPassword;
 }
 
-const sendEmail = async (from: string, to: string, subject: string, template: any) => {
+const sendEmail = async (from: string, to: string, subject: string, template: any): Promise<any> => {
 
-    //Sends Email Activation Link
     const emailData = {
         from: from,
         to: to,
@@ -65,7 +65,9 @@ const sendEmail = async (from: string, to: string, subject: string, template: an
         text: 'text',
         template: template
     };
-    const sentEmail = await config.nodemailer.mailgunService.sendMail(emailData);
+
+    const sentEmail = await nodemailer.mailgunService.sendMail(emailData);
+    
     return sentEmail;
 }
 

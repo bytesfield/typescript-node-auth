@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export default {
+const services: { mailgun: { secret: string, domain: string }, email: { host: string, username: string, password: string, port: string | number } } = {
     mailgun: {
         secret: process.env.MAILGUN_SECRET || 'MAILGUN_SECRET',
         domain: process.env.MAILGUN_DOMAIN || 'MAILGUN_DOMAIN'
@@ -14,3 +14,5 @@ export default {
         port: process.env.EMAIL_PORT || 587
     }
 };
+
+export default services;

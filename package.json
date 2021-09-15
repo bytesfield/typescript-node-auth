@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
+    "@types/crypto-random-string": "^2.0.0",
     "@types/faker": "^5.5.8",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/supertest": "^2.0.11",
