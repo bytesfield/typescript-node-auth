@@ -59,7 +59,7 @@ const handleServerError = (error: Error, req: Request, res: Response, next: Next
 
 }
 
-module.exports = {
+export default {
     handleValidationError,
     handleNotFoundError,
     handleDatabaseError,
