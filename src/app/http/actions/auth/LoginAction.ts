@@ -22,13 +22,13 @@ const execute = async (req: Request| any, res: Response)=> {
         const user: IUserDocument | null = await AuthRepository.getUserByEmail(email);;
 
     if (!user) {
-        return conflict(res,'Email or password is wrong')
+        return badRequest(res,'Email or password is wrong')
     }
 
     const isValidPassword: boolean = await AuthRepository.validPassword(password, user.password);
 
     if (!isValidPassword) {
-        return badRequest(res, 'Invalid Email or Password');
+        return badRequest(res, 'Email or password is wrong');
     }
 
     const signTokenData = {
@@ -48,7 +48,7 @@ const execute = async (req: Request| any, res: Response)=> {
 
         
     } catch (err) {
-        console.log("Error on /api/auth/register: ", err);
+        console.log("Error on /api/auth/login: ", err);
         return serverError(res, 'Error occured', err);
     }
 

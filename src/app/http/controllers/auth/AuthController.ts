@@ -149,7 +149,7 @@ const passWordResetVerify = async (req: Request| any, res: Response): Promise<Re
     if (error) {
         return validationFailed(res, error.details[0].message);
     }
-    //Validate Password
+
     const validPassword: boolean|undefined = isValidPassword(password);
 
     if (!validPassword) {

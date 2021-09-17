@@ -3,7 +3,6 @@ import Joi from "joi";
 const emailValidator: Joi.ObjectSchema<any> = Joi.object({
 
     email: Joi.string()
-        .min(6)
         .required()
         .email(),
 

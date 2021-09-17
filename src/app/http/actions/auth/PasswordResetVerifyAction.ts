@@ -28,7 +28,7 @@ const execute = async (req: Request| any, res: Response)=> {
         await User.updateOne({ email }, { password: newHashedPassword });
         await Code.deleteOne({ email, code });
 
-        return success(res, 'Password updated Successfully');
+        return success(res, 'Password changed Successfully');
 
     } catch (err) {
         console.log("Error on /api/auth/password-reset/verify: ", err);

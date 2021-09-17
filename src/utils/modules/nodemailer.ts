@@ -1,9 +1,6 @@
 import nodemailer from "nodemailer";
 import mg from "nodemailer-mailgun-transport";
 import config from "../../config";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const mailgunAuth: { auth: { api_key: string, domain: string }} = {
     auth: {
