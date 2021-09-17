@@ -25,7 +25,6 @@ app.use(
     })
 );
 
-// #CSRF security for Production
 if (config.app.env == "production") {
     app.use(csurf());
 

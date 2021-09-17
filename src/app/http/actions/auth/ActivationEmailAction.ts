@@ -15,7 +15,7 @@ const execute = async (req: Request| any, res: Response, user: IUserDocument)=> 
     const baseUrl: string = req.protocol + "://" + req.get("host");
 
     try { 
-        const secretCode = generateRandomString(6);
+        const secretCode = generateRandomString({length: 6});
 
         const codePayload: {code: string, email: string} = {
             code: secretCode,
@@ -47,7 +47,7 @@ const execute = async (req: Request| any, res: Response, user: IUserDocument)=> 
         //Send Verification Email
         await sendMail(emailFrom, emailTo, emailSubject, emailTemplate);
 
-        return success(res, 'Successful, Check Email for Activation Link', user)
+        return success(res, 'Check Email for Account Activation Link', user)
 
     } catch (err) {
         console.log("Error on /api/auth/get-activation-email:: ", err);

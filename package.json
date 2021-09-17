@@ -1,10 +1,10 @@
 {
   "name": "typescript-node-auth",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Simple Token-Based User Authentication Service using JWT, Node, Typescript and Express",
   "main": "server.js",
   "scripts": {
-    "start": "export NODE_ENV=production || set NODE_ENV=production && node dist/server.js",
+    "start": "export NODE_ENV=production || set NODE_ENV=production && node dist/src/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
     "test": "export NODE_ENV=test || set NODE_ENV=test && jest --detectOpenHandles  --watchAll --maxWorkers=8"
@@ -15,7 +15,6 @@
     "@babel/preset-env": "^7.15.6",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
-    "@types/crypto-random-string": "^2.0.0",
     "@types/faker": "^5.5.8",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/supertest": "^2.0.11",

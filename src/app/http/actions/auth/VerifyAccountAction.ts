@@ -25,7 +25,7 @@ const execute = async (req: Request| any, res: Response, user: IUserDocument)=> 
         const deleteUserCode = await Code.deleteMany({ email: user.email });
 
         if (activateUser && deleteUserCode) {
-            return success(res, 'Account Activated you can proceed to login')
+            return success(res, 'Account Activated Successfully')
         }
         return conflict(res,'Something went wrong')
 

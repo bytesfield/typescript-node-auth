@@ -16,7 +16,7 @@ const execute = async (req: Request| any, res: Response)=> {
         if (!user) {
             return notFound(res, 'The provided email address is not registered!');
         }
-        const secretCode = generateRandomString(6);
+        const secretCode = generateRandomString({length: 6});
 
         const codePayload: {code: string, email: string} = {
             code: secretCode,

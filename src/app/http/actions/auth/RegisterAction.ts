@@ -66,8 +66,8 @@ const execute = async (req: Request| any, res: Response)=>{
 
         const baseUrl: string = req.protocol + "://" + req.get("host");
 
-        const secretCode: string = generateRandomString(6);
-
+        const secretCode: string = generateRandomString({length: 6});
+ 
         const codePayload: { code: string, email: string } = {
             code: secretCode,
             email: user.email,

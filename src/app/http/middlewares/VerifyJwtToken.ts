@@ -32,7 +32,6 @@ const verifyJwtToken = (req: Request|any, res: Response, next: NextFunction): Re
         next();
 
     } catch (err) {
-        console.log('Something went wrong, token invalid', err);
         return conflict(res, 'Something went wrong, token invalid', err);
     }
 }
