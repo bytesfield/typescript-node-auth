@@ -1,4 +1,4 @@
-import { Request, Response} from 'express';
+import { NextFunction, Request, Response} from 'express';
 import { notFound, success, serverError} from "../../responses";
 import AuthRepository from "../../repositories/AuthRepository";
 import { IUserDocument } from "../../../../database/users/users.types";
@@ -6,7 +6,7 @@ import { ICodeDocument } from "../../../../database/codes/codes.types";
 import { User } from "../../../../database/users/users.model";
 import { Code } from "../../../../database/codes/codes.model";
 
-const execute = async (req: Request| any, res: Response)=> {
+const execute = async (req: Request| any, res: Response, next:NextFunction)=> {
 
     const { email, password, code } = req.body;
 
@@ -31,9 +31,7 @@ const execute = async (req: Request| any, res: Response)=> {
         return success(res, 'Password changed Successfully');
 
     } catch (err) {
-        console.log("Error on /api/auth/password-reset/verify: ", err);
-
-        return serverError(res, 'Something went wrong. Please try again!')
+        next(err);
     }
  
 }

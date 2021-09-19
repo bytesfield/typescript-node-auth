@@ -5,6 +5,8 @@ import cookieSession from "cookie-session";
 import config from "../src/config";
 import csurf from "csurf";
 import routes from "./routes";
+import ExceptionHandler from "../src/app/http/middlewares/ExceptionHandler";
+import { HttpException } from "../src/app/http/exceptions";
 
 
 const app = express();
@@ -25,17 +27,23 @@ app.use(
     })
 );
 
-if (config.app.env == "production") {
-    app.use(csurf());
+// if (config.app.env == "production") {
+//     app.use(csurf());
 
-    app.use((req: Request, res: Response, next: NextFunction): void => {
-        res.set("x-frame-options", "DENY");
+//     app.use((req: Request, res: Response, next: NextFunction): void => {
+//         res.set("x-frame-options", "DENY");
 
-        res.cookie("mytoken", req.csrfToken());
-        next();
-    });
-}
+//         res.cookie("mytoken", req.csrfToken());
+//         next();
+//     });
+// }
 
 app.use(routes);
+
+app.all("*", (req: Request, res: Response, next: NextFunction) => {
+    next(new HttpException(`Requested path ${req.path} not found.`, 404));
+});
+
+app.use(ExceptionHandler);
 
 export default app;

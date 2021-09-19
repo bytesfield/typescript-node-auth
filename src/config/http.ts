@@ -16,5 +16,6 @@ export default {
     status: {
         'SUCCESS': 'success',
         'FAILED': 'failed',
+        'ERROR': 'error',
     }
 };

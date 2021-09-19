@@ -8,7 +8,6 @@ class UserFactory {
 
         const hashedPassword = await AuthRepository.hashPassword('Password@123');
 
-    
         const payload: { firstname: string, lastname: string, email: string, password:string, status: string } = {
             firstname : 'Abraham',
             lastname : 'Udele',
@@ -20,7 +19,6 @@ class UserFactory {
         const user: IUserDocument = await AuthRepository.createUser(payload);
 
         return user;
-    
     }
 }
 

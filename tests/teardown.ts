@@ -1,7 +1,7 @@
-import MemoryDatabase from "../src/database/MemoryDatabaseServer";
+import MongoDbMemoryServer from "../src/database/MongoDbMemoryServer";
 
 export default async () => {
-  await MemoryDatabase.stop();
+  await MongoDbMemoryServer.stop();
 };
 
 /* Note:

@@ -12,7 +12,7 @@ class CodeFactory {
             email: email,
         };
 
-        const code = await AuthRepository.createCode(payload);
+        const code: ICodeDocument = await AuthRepository.createCode(payload);
 
         return code;
     }

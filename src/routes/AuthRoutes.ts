@@ -1,17 +1,18 @@
 import express from "express";
 import AuthController from "../app/http/controllers/auth/AuthController";
 import verifyJwtToken from '../app/http/middlewares/VerifyJwtToken';
+import asyncHandler from 'express-async-handler'
 
 const router = express.Router();
 
-router.post('/register', AuthController.register);
-router.post('/login', AuthController.login);
-router.get('/verification/get-activation-email', verifyJwtToken, AuthController.getActivationEmail);
-router.get('/verification/verify-account/:userId/:secretCode',AuthController.verifyAccount);
-router.post('/password-reset/get-code',AuthController.passWordResetGetCode);
-router.post('/password-reset/verify',AuthController.passWordResetVerify);
-router.post('/logout',verifyJwtToken, AuthController.logout);
-router.post('/delete-account', verifyJwtToken, AuthController.deleteAccount );
+router.post('/register', asyncHandler(AuthController.register));
+router.post('/login', asyncHandler(AuthController.login));
+router.get('/verification/get-activation-email', verifyJwtToken, asyncHandler(AuthController.getActivationEmail));
+router.get('/verification/verify-account/:userId/:secretCode', asyncHandler(AuthController.verifyAccount));
+router.post('/password-reset/get-code', asyncHandler(AuthController.passWordResetGetCode));
+router.post('/password-reset/verify', asyncHandler(AuthController.passWordResetVerify));
+router.post('/logout', verifyJwtToken, asyncHandler(AuthController.logout));
+router.post('/delete-account', verifyJwtToken, asyncHandler(AuthController.deleteAccount));
 
 
 

@@ -1,5 +1,5 @@
 import app from "../src/app";
-import supertest, {SuperTest, Test} from "supertest";
+import supertest, { SuperTest, Test } from "supertest";
 
 class Helper {
     public apiServer: SuperTest<Test>;
@@ -12,4 +12,4 @@ class Helper {
 
 }
 
-export {Helper};
+export { Helper };

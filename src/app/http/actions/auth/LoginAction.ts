@@ -1,5 +1,5 @@
-import { Request, Response} from 'express';
-import { conflict, success, serverError, badRequest, unauthorized} from "../../responses";
+import { NextFunction, Request, Response } from 'express';
+import { conflict, success, serverError, badRequest, unauthorized } from "../../responses";
 import AuthRepository from "../../repositories/AuthRepository";
 import { IUserDocument } from "../../../../database/users/users.types";
 import config from "../../../../config";
@@ -12,17 +12,15 @@ const signTokenExpiry = {
     expiresIn: 60 * 60 * 24 * 14,
 } as signToken;
 
-const execute = async (req: Request| any, res: Response)=> {
+const execute = async (req: Request | any, res: Response, next: NextFunction) => {
 
-    const email:string = req.body.email;
+    const email: string = req.body.email;
     const password: string = req.body.password;
 
-    try {
-
-        const user: IUserDocument | null = await AuthRepository.getUserByEmail(email);;
+    const user: IUserDocument | null = await AuthRepository.getUserByEmail(email);;
 
     if (!user) {
-        return badRequest(res,'Email or password is wrong')
+        return badRequest(res, 'Email or password is wrong')
     }
 
     const isValidPassword: boolean = await AuthRepository.validPassword(password, user.password);
@@ -44,14 +42,8 @@ const execute = async (req: Request| any, res: Response)=> {
         token: token
     };
 
-    return success(res, 'Logged in Successfully', tokenData, {'auth-token': token});
-
-        
-    } catch (err) {
-        console.log("Error on /api/auth/login: ", err);
-        return serverError(res, 'Error occured', err);
-    }
+    return success(res, 'Logged in Successfully', tokenData, { 'auth-token': token });
 
 }
 
-export default {execute};
+export default { execute };

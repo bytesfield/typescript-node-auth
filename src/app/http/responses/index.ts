@@ -9,6 +9,7 @@ import serviceUnavailable from './serviceUnavailable';
 import unauthorized from './unauthorized';
 import unprocessibleEntity from './unprocessibleEntity';
 import conflict from './conflict';
+import buildResponse from './buildResponse';
 
 export {
   success,
@@ -21,5 +22,6 @@ export {
   serviceUnavailable,
   serverError,
   unprocessibleEntity,
-  conflict
+  conflict,
+  buildResponse
 };

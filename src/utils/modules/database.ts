@@ -1,6 +1,6 @@
 import mongoose, { ConnectOptions } from "mongoose";
 import config from "../../config";
-import MemoryDatabaseServer from "../../../src/database/MemoryDatabaseServer";
+import MemoryDatabaseServer from "../../database/MongoDbMemoryServer";
 
 const connect = async (): Promise<void> => {
   if (mongoose.connection.readyState === 0) {

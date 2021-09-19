@@ -1,15 +1,15 @@
 import NodeEnvironment from "jest-environment-node";
-import MemoryDb from "../src/database/MemoryDatabaseServer";
+import MongoDbMemoryServer from "../src/database/MongoDbMemoryServer";
 
 class CustomEnvironment extends NodeEnvironment {
 
-  async setup(){
+  async setup() {
     await super.setup();
 
-    this.global.__DB_URL__ = await MemoryDb.getConnectionString();
+    this.global.__DB_URL__ = await MongoDbMemoryServer.getConnectionString();
   }
 
-  async teardown(){
+  async teardown() {
     await super.teardown();
   }
 

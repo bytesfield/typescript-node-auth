@@ -1,4 +1,4 @@
-import { Request, Response} from 'express';
+import { NextFunction, Request, Response} from 'express';
 import { success, serverError} from "../../responses";
 import AuthRepository from "../../repositories/AuthRepository";
 import config from "../../../../config";
@@ -11,10 +11,9 @@ type verificationDataType = {
     baseUrl: string, userId: string, secretCode: string
 }
 
-const execute = async (req: Request| any, res: Response, user: IUserDocument)=> {
+const execute = async (req: Request| any, res: Response, next:NextFunction, user: IUserDocument)=> {
     const baseUrl: string = req.protocol + "://" + req.get("host");
 
-    try { 
         const secretCode = generateRandomString({length: 6});
 
         const codePayload: {code: string, email: string} = {
@@ -48,11 +47,6 @@ const execute = async (req: Request| any, res: Response, user: IUserDocument)=> 
         await sendMail(emailFrom, emailTo, emailSubject, emailTemplate);
 
         return success(res, 'Check Email for Account Activation Link', user)
-
-    } catch (err) {
-        console.log("Error on /api/auth/get-activation-email:: ", err);
-        return serverError(res,'Error occurred', err);
-    }
 
     
 }
