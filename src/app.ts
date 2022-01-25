@@ -5,8 +5,8 @@ import cookieSession from "cookie-session";
 import config from "../src/config";
 import csurf from "csurf";
 import routes from "./routes";
-import ExceptionHandler from "../src/app/http/middlewares/ExceptionHandler";
-import { HttpException } from "../src/app/http/exceptions";
+import ExceptionHandler from "../src/app/middlewares/ExceptionHandler";
+import { HttpException } from "../src/app/exceptions";
 
 
 const app = express();
